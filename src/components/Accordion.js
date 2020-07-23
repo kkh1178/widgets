@@ -1,9 +1,19 @@
-import React from 'react';
+// Adding useState from the react library
+import React, {useState} from 'react';
 
 const Accordion = ({items}) => {
 
+    // useState is a function that will allow you to use state in a functional component
+    // This is not actually creating an array. We are setting the first element of useState 
+    // to activeIndex (useState[0]) and the second to setActiveIndex (useState[1]).
+    // This is array destructuring.
+    // 
+    // useState will return an array of two elements. Active index is assigned to initial state and we 
+    // can update activeIndex using setActiveIndex 
+    const [activeIndex, setActiveIndex] = useState(null);
+
     const onTitleClick =(index) => {
-        console.log("Title clicked", index);
+        setActiveIndex(index);
     }
 
     const renderedItems = items.map((items, index) => {
@@ -26,7 +36,12 @@ const Accordion = ({items}) => {
         )
     });
 
-return <div className="ui styled accordion">{renderedItems}</div>
+return (
+    <div className="ui styled accordion">
+        {renderedItems}
+        <h1>{activeIndex}</h1>
+    </div>
+)
 }
 
 export default Accordion;
