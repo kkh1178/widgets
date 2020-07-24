@@ -4,6 +4,9 @@ import axios from 'axios';
 const Search = () => {
 
     const [term, setTerm] = useState('');
+    const [results, setResults] =useState([]);
+
+    console.log(results)
 
     // First argument is always a function in useEffect. We have to tell useEffect 
     // when we want it to execute: an empty array, an array with elements, or nothing.
@@ -19,7 +22,7 @@ const Search = () => {
     useEffect(()=> {
         
         const searchWiki = async() => {
-            await axios.get("https://en.wikipedia.org/w/api.php", {
+            const {data}= await axios.get("https://en.wikipedia.org/w/api.php", {
                 params: {
                     action: "query",
                     list: 'search',
@@ -28,8 +31,14 @@ const Search = () => {
                     srsearch: term,
                 }
             });
+            // We don't need the entire query, just the results
+            setResults(data.query.search);
         };
-        searchWiki();
+        // If term has some characters inside of it, we will search.
+        if (term) {
+            searchWiki();
+        }
+        
     }, [term])
 
     return (
