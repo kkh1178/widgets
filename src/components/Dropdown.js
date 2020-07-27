@@ -2,7 +2,7 @@ import React, {useState, useEffect, useRef} from 'react';
 
 
 
-const Dropdown = ({options, selected, onSelectedChange}) => {
+const Dropdown = ({label, options, selected, onSelectedChange}) => {
     // To toggle the menu as open or closed
     const [open, setOpen] = useState(false);
     const ref = useRef();
@@ -62,7 +62,7 @@ const Dropdown = ({options, selected, onSelectedChange}) => {
     return (
         <div ref={ref} className="ui form">
             <div className="field">
-                <label className="label">Select a Color</label>
+                <label className="label">{label}</label>
             </div>
             <div 
                 onClick={()=> {
