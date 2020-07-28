@@ -13,7 +13,7 @@ const Dropdown = ({label, options, selected, onSelectedChange}) => {
         const onBodyClick = (event) => {
             // console.log(event.target)
 
-            // ref.current.contains will look and see if the element we clicked on is insed of the component
+            // ref.current.contains will look and see if the element we clicked on is inside of the component
             // if it is inside, then return early; otherwise do a setOpen with false.
 
             // If we toggle being able to see or not see the dropdown menu, ref.current will turn to null. Contains can't read

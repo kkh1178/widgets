@@ -14,9 +14,9 @@ const Accordion = ({items}) => {
 
     const onTitleClick =(index) => {
         setActiveIndex(index);
-    }
+    };
 
-    const renderedItems = items.map((items, index) => {
+    const renderedItems = items.map((item, index) => {
 
         // if the index is item we are iterating over is equal to the activeIndex piece of state
         // if it is, assign a value of "active" to it. Otherwise assign an empty string.
@@ -24,7 +24,7 @@ const Accordion = ({items}) => {
         const active = index === activeIndex ? "active": '';
 
         return (
-        <React.Fragment key={items.title}>
+        <React.Fragment key={item.title}>
             {/* The className will be determined by active function above */}
             <div className={`title ${active}`}
             // Arrow function is added to onClick because if we don't, then onClick will run immediately when
@@ -33,10 +33,10 @@ const Accordion = ({items}) => {
             >
 
                 <i className="dropdown icon"></i>
-                {items.title}
+                {item.title}
             </div>
             <div className={`content ${active}`}>
-                <p>{items.content}</p>
+                <p>{item.content}</p>
             </div>
         </React.Fragment>
         
